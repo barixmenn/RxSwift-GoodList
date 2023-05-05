@@ -56,7 +56,7 @@
                     <navigationItem key="navigationItem" title="Good List" id="FW8-UJ-eST">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="3pC-fj-SFk">
                             <connections>
-                                <segue destination="E1k-ds-vzx" kind="push" id="wOV-4z-7t9"/>
+                                <segue destination="oHA-aJ-fCM" kind="modal" id="wOV-4z-7t9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -75,11 +75,11 @@
             <objects>
                 <viewController id="E1k-ds-vzx" customClass="AddTaskController" customModule="RxSwift_GoodList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="86l-Cu-Xbe">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AvR-c0-0G1">
-                                <rect key="frame" x="94" y="103" width="205" height="32"/>
+                                <rect key="frame" x="94" y="56" width="205" height="32"/>
                                 <segments>
                                     <segment title="Height"/>
                                     <segment title="Medium"/>
@@ -87,7 +87,7 @@
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="etA-6M-Nty">
-                                <rect key="frame" x="16" y="164" width="361" height="34"/>
+                                <rect key="frame" x="16" y="117" width="361" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -105,7 +105,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XOo-U2-wfs">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="5m2-5k-9kG"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="5m2-5k-9kG">
+                            <connections>
+                                <action selector="save:" destination="E1k-ds-vzx" id="Gut-4n-mAA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="choiceSegmentController" destination="AvR-c0-0G1" id="JIZ-wG-J7S"/>
@@ -114,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkU-Yo-olb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817.5572519083969" y="-39.436619718309863"/>
+            <point key="canvasLocation" x="2744.2748091603053" y="-39.436619718309863"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUf-H4-tgm">
@@ -133,6 +137,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zal-62-vzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wak-8b-Ew9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oHA-aJ-fCM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xhJ-pN-lP0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sQ2-rH-3Lk">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="E1k-ds-vzx" kind="relationship" relationship="rootViewController" id="KLn-ON-KA0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foq-50-Lk7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1817.5572519083969" y="-39.436619718309863"/>
         </scene>
     </scenes>
     <resources>

@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import RxSwift
 
+private let disposeBag = DisposeBag()
 class TaskViewController: UIViewController {
 
     @IBOutlet weak var choiceSegmentController: UISegmentedControl!
@@ -26,6 +28,11 @@ class TaskViewController: UIViewController {
             let addTVC = navC.viewControllers.first as? AddTaskController else {
                 fatalError("Controller not found...")
         }
+        
+        addTVC.taskSubjectObservable
+            .subscribe { task in
+                print(task)
+            }.disposed(by: disposeBag)
     }
 
 }
