@@ -19,7 +19,7 @@ class TaskViewController: UIViewController {
     
     //MARK: - Properties
     private var tasks = BehaviorRelay(value: [Task]())
-    
+    private var filteredTasks = [Task]()
 
     
     //MARK: - Lifecycle
@@ -29,6 +29,8 @@ class TaskViewController: UIViewController {
         self.tableView.dataSource = self
     }
     
+    
+    //MARK: - Functions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let navC = segue.destination as? UINavigationController,
@@ -37,15 +39,39 @@ class TaskViewController: UIViewController {
         }
         
         addTVC.taskSubjectObservable
-            .subscribe { task in
+            .subscribe { [unowned self] task in
                 print(task)
                 let priority = Priority(rawValue: self.choiceSegmentController.selectedSegmentIndex - 1)
                 var existingTask = self.tasks.value
                 existingTask.append(task)
                 self.tasks.accept(existingTask)
+                self.filterTasks(by: priority)
             }.disposed(by: disposeBag)
     }
 
+    //MARK: - Actions
+    @IBAction func priorityValueChanged(segmentedControl: UISegmentedControl) {
+        
+        let priority = Priority(rawValue: segmentedControl.selectedSegmentIndex - 1)
+        filterTasks(by: priority)
+        
+    }
+}
+
+//MARK: - Helper
+extension TaskViewController {
+    private func filterTasks(by priority: Priority?) {
+        if priority == nil {
+            self.filteredTasks = self.tasks.value
+        } else {
+            self.tasks.map { tasks in
+                return tasks.filter { $0.priority == priority!}
+            }.subscribe(onNext: { [weak self] tasks in
+                self?.filteredTasks = tasks
+                print(tasks)
+            }).disposed(by: disposeBag)
+        }
+    }
 }
 
 //MARK: - TableViewDataSource
