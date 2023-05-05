@@ -63,13 +63,21 @@ extension TaskViewController {
     private func filterTasks(by priority: Priority?) {
         if priority == nil {
             self.filteredTasks = self.tasks.value
+            self.updateTableView()
         } else {
             self.tasks.map { tasks in
                 return tasks.filter { $0.priority == priority!}
             }.subscribe(onNext: { [weak self] tasks in
                 self?.filteredTasks = tasks
                 print(tasks)
+                self?.updateTableView()
             }).disposed(by: disposeBag)
+        }
+    }
+    
+    private func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
@@ -77,11 +85,11 @@ extension TaskViewController {
 //MARK: - TableViewDataSource
 extension TaskViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return filteredTasks.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "test"
+        cell.textLabel?.text = self.filteredTasks[indexPath.row].title
         return cell
     }
 }
