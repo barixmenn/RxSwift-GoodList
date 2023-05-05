@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TaskViewController: UIViewController {
 
     @IBOutlet weak var choiceSegmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -19,12 +19,19 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.dataSource = self
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let navC = segue.destination as? UINavigationController,
+            let addTVC = navC.viewControllers.first as? AddTaskController else {
+                fatalError("Controller not found...")
+        }
+    }
 
 }
 
 //MARK: - TableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension TaskViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
