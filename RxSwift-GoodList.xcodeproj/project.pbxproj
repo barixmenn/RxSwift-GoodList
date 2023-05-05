@@ -14,6 +14,7 @@
 		605659962A050C5C005D9FA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605659952A050C5C005D9FA7 /* Assets.xcassets */; };
 		605659992A050C5C005D9FA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 605659972A050C5C005D9FA7 /* LaunchScreen.storyboard */; };
 		605659A52A050F8F005D9FA7 /* AddTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605659A42A050F8F005D9FA7 /* AddTaskController.swift */; };
+		605659A82A05130C005D9FA7 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605659A72A05130C005D9FA7 /* Task.swift */; };
 		83AED44145B51363C749DC93 /* Pods_RxSwift_GoodList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBC8D505B35A9D1BFEBCF4E /* Pods_RxSwift_GoodList.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		605659982A050C5C005D9FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6056599A2A050C5C005D9FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		605659A42A050F8F005D9FA7 /* AddTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskController.swift; sourceTree = "<group>"; };
+		605659A72A05130C005D9FA7 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		6056598B2A050C5A005D9FA7 /* RxSwift-GoodList */ = {
 			isa = PBXGroup;
 			children = (
+				605659A62A051306005D9FA7 /* Model */,
 				605659A12A050CE0005D9FA7 /* Sources */,
 				605659A02A050CD2005D9FA7 /* Scene */,
 				605659922A050C5A005D9FA7 /* Main.storyboard */,
@@ -117,13 +120,20 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
+		605659A62A051306005D9FA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				605659A72A05130C005D9FA7 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CAB65FFC46594F9EB3C977AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				0EB4C75C328234CAB1488286 /* Pods-RxSwift-GoodList.debug.xcconfig */,
 				39F4B4E50A7D59BAEA345F04 /* Pods-RxSwift-GoodList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -244,6 +254,7 @@
 			files = (
 				605659912A050C5A005D9FA7 /* TaskViewController.swift in Sources */,
 				6056598D2A050C5A005D9FA7 /* AppDelegate.swift in Sources */,
+				605659A82A05130C005D9FA7 /* Task.swift in Sources */,
 				605659A52A050F8F005D9FA7 /* AddTaskController.swift in Sources */,
 				6056598F2A050C5A005D9FA7 /* SceneDelegate.swift in Sources */,
 			);
