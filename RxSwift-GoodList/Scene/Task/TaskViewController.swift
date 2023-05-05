@@ -7,13 +7,20 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 
 private let disposeBag = DisposeBag()
+
 class TaskViewController: UIViewController {
 
+    //MARK: - UI Element
     @IBOutlet weak var choiceSegmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - Properties
+    private var tasks = BehaviorRelay(value: [Task]())
+    
+
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,6 +39,10 @@ class TaskViewController: UIViewController {
         addTVC.taskSubjectObservable
             .subscribe { task in
                 print(task)
+                let priority = Priority(rawValue: self.choiceSegmentController.selectedSegmentIndex - 1)
+                var existingTask = self.tasks.value
+                existingTask.append(task)
+                self.tasks.accept(existingTask)
             }.disposed(by: disposeBag)
     }
 
